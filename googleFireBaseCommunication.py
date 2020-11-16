@@ -1,13 +1,14 @@
 import pyrebase
 
+
 config = {
-    "apiKey": "AIzaSyBSoaetl0Gd9xe8SGzT5YefiTFjoEDwyf4",
-    "authDomain": "mojstick-72ecb.firebaseapp.com",
-    "databaseURL": "https://mojstick-72ecb.firebaseio.com",
-    "projectId": "mojstick-72ecb",
-    "messagingSenderId": "912823611803",
-    "storageBucket": "mojstick-72ecb.appspot.com",
-    "serviceAccount": "mojstick-72ecb-firebase-adminsdk-qua8y-ee203791f7.json"
+    "apiKey": "AIzaSyA6l04lL9R8hHRJc2Ri67kAnfDW697WezI",
+    "authDomain": "mojstickpy.firebaseapp.com",
+    "databaseURL": "https://mojstickpy.firebaseio.com",
+    "projectId": "mojstickpy",
+    "storageBucket": "mojstickpy.appspot.com",
+    "messagingSenderId": "96104255538",
+    "appId": "1:96104255538:web:e81dbd194df664d6b12c2b"
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -15,11 +16,11 @@ db = firebase.database()
 
 
 def updateStick(textToUpdate):
-    db.child("notatki").child("-LvFs7_CBp-KcuASoIJA").set({"stick": textToUpdate})
 
+    db.set({"stick": textToUpdate})
 
 def getStickValue():
-    stickFromFireBase = db.child("notatki").child("-LvFs7_CBp-KcuASoIJA").get().val()['stick']
+    stickFromFireBase = list(db.child().get().val().items())[0][1]
     return stickFromFireBase
 
 
